@@ -9,6 +9,7 @@ import psutil
 import threading
 import tkinter as tk
 from datetime import datetime
+import platform
 
 mouse = mouseController()
 keyboard = keyboardController()
@@ -155,9 +156,17 @@ def offsetDims(pos, xy):
         return int(pos * (screenDims[1] / 1080))
 
 def writeFile(fileName, val):
+    if platform.system().lower() == "windows":
+        while "/" in fileName:
+            fileName = fileName.replace("/", "\\")
+
     with open(fileName, "w+") as file:
         file.write(str(val))
 
 def readFile(fileName):
+    if platform.system().lower() == "windows":
+        while "/" in fileName:
+            fileName = fileName.replace("/", "\\")
+
     with open(fileName, "r") as file:
         return file.read()
