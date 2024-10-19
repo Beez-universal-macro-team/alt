@@ -42,11 +42,15 @@ def isWindowOpen(windowName):
     return False
 
 def sendMessage(message, picture=None):
-    webhook = discord.SyncWebhook.from_url(readFile("guiFiles/webhook.txt"))
+    try:
+        webhook = discord.SyncWebhook.from_url(readFile("guiFiles/webhook.txt"))
+    
+        tm = datetime.now()
+    
+        webhook.send(f"[{tm.hour}:{tm.minute}:{tm.second}] {message}") if picture == None else webhook.send(f"[{tm.hour}:{tm.minute}:{tm.second}] {message}", file=picture)
 
-    tm = datetime.now()
-
-    webhook.send(f"[{tm.hour}:{tm.minute}:{tm.second}] {message}") if picture == None else webhook.send(f"[{tm.hour}:{tm.minute}:{tm.second}] {message}", file=picture)
+    except:
+        pass
 
 
 def sendScreenshot(message):
