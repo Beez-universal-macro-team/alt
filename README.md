@@ -1,1 +1,3 @@
-# alt-V1
+# How to use
+
+## Run main.py
