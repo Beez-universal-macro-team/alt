@@ -10,6 +10,9 @@ import threading
 import tkinter as tk
 from datetime import datetime
 import platform
+import os
+
+main_dir = os.path.dirname(os.path.abspath(__file__))
 
 mouse = mouseController()
 keyboard = keyboardController()
@@ -160,13 +163,22 @@ def writeFile(fileName, val):
         while "/" in fileName:
             fileName = fileName.replace("/", "\\")
 
-    with open(fileName, "w+") as file:
+    full_path = os.path.join(main_dir, fileName)
+    
+    # Create the directory if it doesn't exist
+    os.makedirs(os.path.dirname(full_path), exist_ok=True)
+    
+    # Open the file in write mode, creating it if it doesn't exist
+    with open(full_path, "w+") as file:
         file.write(str(val))
+
 
 def readFile(fileName):
     if platform.system().lower() == "windows":
         while "/" in fileName:
             fileName = fileName.replace("/", "\\")
 
-    with open(fileName, "r") as file:
+    full_path = os.path.join(main_dir, fileName)
+    
+    with open(full_path, "r") as file:
         return file.read()
