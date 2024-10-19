@@ -1,5 +1,5 @@
 import tkinter as tk
-from functions import offsetDims, screenDims, writeFile, readFile
+from functions import offsetDims, screenDims, writeFile, readFile, sendMessage
 import pyautogui
 import altScript
 
@@ -10,6 +10,8 @@ class GUI:
         self.connected = False
 
     def initWindow(self):
+        sendMessage("Started alt!")
+        
         self.window = tk.Tk()
 
         self.window.title("Beez Universal Macro - Alt")
