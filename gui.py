@@ -145,7 +145,7 @@ class GUI:
 
         self.owner = tk.Label(self.creditsTab, text=owner)
 
-        self.contributors = tk.Label(self.creditsTab, text="Contributors:")
+        self.contributors = tk.Label(self.creditsTab, text="Developpers:")
         self.contributors.config(font=(self.font, 15))
 
         for contributor in contributors:
