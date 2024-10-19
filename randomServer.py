@@ -49,7 +49,9 @@ def joinRandomServer(place_id):
                 else:
                     psN += 1
 
-                joinRandomServer(place_id)
+                url = joinRandomServer(place_id)
+
+                return url
 
     print("Joining public server")
 
@@ -71,7 +73,9 @@ def joinRandomServer(place_id):
         else:
             time.sleep(10)
 
-            joinRandomServer(place_id)
+            url = joinRandomServer(place_id)
+
+            return url
 
     except:
         pass
