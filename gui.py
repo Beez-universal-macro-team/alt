@@ -16,8 +16,6 @@ class GUI:
 
         self.window.title("Beez Universal Macro - Alt")
 
-        self.window.iconbitmap("basicbeeface.ico")
-
         self.window.geometry(f"{offsetDims(700, 'x')}x{offsetDims(350, 'y')}")
 
         self.window.resizable(False, False) #Locks GUI size
