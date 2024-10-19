@@ -211,8 +211,6 @@ class GUI:
         for contributor in contributors:
             globals()[f"self.{contributor}"].pack()
 
-        tk.Label(self.creditsTab).pack()
-
         self.specialThanks.pack()
 
         for specialThank in specialThanks:
