@@ -140,6 +140,11 @@ class GUI:
             "Fire_king66",
         ]
 
+        self.ownerText = tk.Label(self.creditsTab, text="Owner:")
+        self.ownerText.config(font=(self.font, 15))
+
+        self.owner = tk.Label(self.creditsTab, text=owner)
+
         self.contributors = tk.Label(self.creditsTab, text="Contributors:")
         self.contributors.config(font=(self.font, 15))
 
@@ -197,6 +202,9 @@ class GUI:
             globals()[f"self.{i + 1}"].pack()
 
         self.usingPsBox.pack()
+
+        self.ownerText.pack()
+        self.owner.pack()
 
         self.contributors.pack()
 
