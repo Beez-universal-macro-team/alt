@@ -2,6 +2,9 @@ import tkinter as tk
 from functions import offsetDims, screenDims, writeFile, readFile, sendMessage
 import pyautogui
 import altScript
+import os
+
+main_dir = os.path.dirname(os.path.abspath(__file__))
 
 class GUI:
     def __init__(self, font="Courier"):
@@ -16,6 +19,10 @@ class GUI:
 
         self.window.title("Beez Universal Macro - Alt")
 
+        # Set the GUI logo
+        logo_path = os.path.join(main_dir, "basicbeeface.ico")
+        self.window.iconbitmap(logo_path)
+        
         self.window.geometry(f"{offsetDims(700, 'x')}x{offsetDims(350, 'y')}")
 
         self.window.resizable(False, False) #Locks GUI size
