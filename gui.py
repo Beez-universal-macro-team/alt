@@ -223,7 +223,7 @@ class GUI:
         for specialThank in specialThanks:
             globals()[f"self.{specialThank}"].pack()
 
-        self.window.attributes("-topmost", False)
+        self.window.attributes("-topmost", True)
 
     def maxLoadTimeChange(self):
         tm = self.maxLoad.get()
