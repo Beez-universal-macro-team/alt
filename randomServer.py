@@ -12,7 +12,7 @@ servers_data = ""
 psN = 0
 psTime = 0
 
-def joinRandomServer(place_id):
+def joinRandomServer(place_id = 1537690962):
     global lastRequest
     global servers_data
     global psN
