@@ -23,6 +23,8 @@ walkSpeed = 33.35
 
 screenDims = [root.winfo_screenwidth(), root.winfo_screenheight()]
 
+root.destroy()
+
 def isColorClose(color1, color2, maxDiff):
     for index, col in enumerate(color1):
         if abs(col - color2[index]) <= maxDiff:
