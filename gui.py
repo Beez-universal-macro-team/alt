@@ -294,5 +294,6 @@ class GUI:
 
             self.connected = True
 
-        except:
+        except Exception as e:
+            print(e)
             pyautogui.alert("Make sure to press connect on main first!")
