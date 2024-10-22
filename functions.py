@@ -7,7 +7,7 @@ import mss
 import discord
 import psutil
 import threading
-import tkinter as tk
+import pyautogui
 from datetime import datetime
 import platform
 import os
@@ -17,13 +17,9 @@ main_dir = os.path.dirname(os.path.abspath(__file__))
 mouse = mouseController()
 keyboard = keyboardController()
 
-root = tk.Tk()
-
 walkSpeed = 33.35
 
-screenDims = [root.winfo_screenwidth(), root.winfo_screenheight()]
-
-root.destroy()
+screenDims = pyautogui.size()
 
 def isColorClose(color1, color2, maxDiff):
     for index, col in enumerate(color1):
