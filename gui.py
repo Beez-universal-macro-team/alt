@@ -289,11 +289,12 @@ class GUI:
     def connectToMain(self):
         self.Alt = altScript.Alt(self.ip.get(), int(self.port.get()), int(self.maxLoad.get()))
 
+        time.sleep(0.01)
+
         try:
             self.Alt.connectToMain()
 
             self.connected = True
 
-        except Exception as e:
-            print(e)
-            pyautogui.alert("Make sure to press connect on main first!")
+        except:
+            pass
