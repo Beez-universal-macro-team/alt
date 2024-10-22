@@ -143,7 +143,6 @@ class GUI:
 
         specialThanks = [
             "Slymi",
-            "_epic",
             "Fire_king66",
             "Lvl18BubbleBee",
         ]
