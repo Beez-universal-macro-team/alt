@@ -69,7 +69,7 @@ class GUI:
         self.connectTitle = tk.Label(self.connectTab, text="Connecting")
         self.connectTitle.config(font=(self.font, 17))
 
-        self.ipText = tk.Label(self.connectTab, text="Host name (found in main, settings tab):")
+        self.ipText = tk.Label(self.connectTab, text="Host name (found in main, connecting tab):")
         self.ipText.config(font=(self.font, 14))
 
         self.ip = tk.Entry(self.connectTab, width=10)
