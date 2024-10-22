@@ -7,7 +7,6 @@ import mss
 import discord
 import psutil
 import threading
-import pyautogui
 from datetime import datetime
 import platform
 import os
