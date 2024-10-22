@@ -20,7 +20,7 @@ def waitForLoading(maxWaitTime=20):
     while True:
         screen = screenshot()
 
-        if isColorClose(screen.getpixel(offsetDims((1300, 812), "list")), (34, 87, 168), 3):
+        if isColorClose(screen.getpixel(offsetDims((1300, 812), "list")), (34, 87, 168), 15):
             break
 
         elif time.time() - tm >= maxWaitTime:
@@ -30,10 +30,12 @@ def waitForLoading(maxWaitTime=20):
 
     tm = time.time()
 
+    print("Loading found!")
+
     while True:
         screen = screenshot()
 
-        if not isColorClose(screen.getpixel(offsetDims((1300, 812), "list")), (34, 87, 168), 3):
+        if not isColorClose(screen.getpixel(offsetDims((1300, 812), "list")), (34, 87, 168), 15):
             return True
 
         elif time.time() - tm >= maxWaitTime:
@@ -44,17 +46,13 @@ def waitForLoading(maxWaitTime=20):
 def detectNight():
     screen = screenshot()
 
-    if isColorClose(screen.getpixel(offsetDims((1376, 914), "list")), (86, 100, 107), 5):
+    if isColorClose(screen.getpixel(offsetDims((1376, 914), "list")), (86, 100, 107), 10):
         return True
 
     return False
 
 def findNightServer(maxWaitTime=10, alt=False):
-    hiveSlot = 0
-
     serverLoop = 0
-
-    lastUrl = ""
 
     while True:
         serverLoop += 1
@@ -62,19 +60,7 @@ def findNightServer(maxWaitTime=10, alt=False):
         if isWindowOpen("RobloxPlayerBeta.exe"):
             leave()
 
-        if not alt:
-            if open("lastUrl.txt", "r").read() == lastUrl:
-                joinRandomServer(1537690962)
-
-            else:
-                sendMessage("Joining alt...")
-
-                webbrowser.open(open("lastUrl.txt", "r").read())
-
-        else:
-            url = joinRandomServer(1537690962)
-
-        lastUrl = open("lastUrl.txt", "r").read()
+        url = joinRandomServer(1537690962)
 
         if not waitForLoading(maxWaitTime=maxWaitTime):
             continue
@@ -86,10 +72,14 @@ def findNightServer(maxWaitTime=10, alt=False):
         if not detectNight():
             continue
 
+        print("Night found!")
+
         sendScreenshot(f"Night server found :D (attempts: {serverLoop})")
 
         click(offsetDims((1000, 500), "list"))
 
         time.sleep(0.5)
+
+        break
 
     return url
