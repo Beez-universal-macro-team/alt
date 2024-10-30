@@ -1,26 +1,42 @@
 import subprocess
 import sys
 
-# List of required libraries
+# List of required libraries (with keyboard added)
 required_libraries = [
-    'pyautogui',
     'pynput',
     'Pillow',  # for PIL
     'mss',
     'discord.py',  # for discord
+    'discord',
     'psutil',
-    'tkinter',  # tkinter comes with Python, no need to install, but added here for clarity
+    'customtkinter',
     'requests',
     'fonttools',  # for fontTools.misc.textTools
-    'platform',  # usually comes pre-installed with Python
-    'ultralytics' # AI model stuff
+    'ultralytics',
+    'matplotlib',
+    'audioop-lts',
+    'keyboard'  # Added keyboard module
 ]
 
-# Function to install libraries
-def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+def install(*packages):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", *packages])
 
-# Install all required libraries
+# First try to install pyautogui separately with special flags
+try:
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "--no-cache-dir", "--user", "pyautogui"])
+    print("'pyautogui' installed successfully.")
+except subprocess.CalledProcessError:
+    print("Failed to install 'pyautogui'.")
+
+# Then continue with the rest of the installations
+try:
+    install("pip", "--upgrade")
+    install("setuptools", "--upgrade")
+    print("Pip upgraded successfully.")
+except subprocess.CalledProcessError:
+    print("Failed to upgrade pip.")
+
+# Install remaining libraries
 for lib in required_libraries:
     try:
         install(lib)
