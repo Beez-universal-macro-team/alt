@@ -239,3 +239,14 @@ class GUI:
             self.connected = True
         except:
             pass
+
+
+    def saveSettings(self):
+        self.maxLoadTimeChange()
+        self.ipChange()
+        self.webhookChange()
+        self.portChange()
+        self.modeChange()
+        self.privateServersChange()
+
+        self.window.after(1000, self.saveSettings
