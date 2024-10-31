@@ -34,6 +34,7 @@ class Alt:
 
                 try:
                     self.sendToMain(url)
+                    sendMessage("message sent!")
 
                 except:
                     sendMessage("Alt disconnected. Reconnecting...")
