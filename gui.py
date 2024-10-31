@@ -249,4 +249,4 @@ class GUI:
         self.modeChange()
         self.privateServersChange()
 
-        self.window.after(1000, self.saveSettings
+        self.window.after(1000), self.saveSettings
