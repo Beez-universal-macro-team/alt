@@ -3,6 +3,7 @@ from functions import offsetDims, screenDims, writeFile, readFile, sendMessage
 import pyautogui
 import altScript
 import os
+import time
 
 main_dir = os.path.dirname(os.path.abspath(__file__))
 
