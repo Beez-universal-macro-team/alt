@@ -22,7 +22,8 @@ class GUI:
         logo_path = os.path.join(main_dir, "basicbeeface.ico")
         self.window.iconbitmap(logo_path)
         
-        self.window.geometry(f"{offsetDims(700, 'x')}x{offsetDims(350, 'y')}")
+        self.window.geometry(f"{max(offsetDims(700, 'x'), 700)}x{max(offsetDims(350, 'y'), 350)}")
+        self.window.minsize(700, 350)
         self.window.resizable(False, False)
 
         self.tabControl = ctk.CTkTabview(self.window)
