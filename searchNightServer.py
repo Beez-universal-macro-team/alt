@@ -49,6 +49,9 @@ def detectNight():
     if isColorClose(screen.getpixel(offsetDims((1376, 914), "list")), (86, 100, 107), 10):
         return True
 
+    if isColorClose(screen.getpixel(offsetDims((1376, 914), "list")), (24, 76, 28), 10):
+        return True
+
     return False
 
 def findNightServer(maxWaitTime=10, alt=False):
