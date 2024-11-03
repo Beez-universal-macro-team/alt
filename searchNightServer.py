@@ -60,9 +60,6 @@ def findNightServer(maxWaitTime=10, alt=False):
     while True:
         serverLoop += 1
 
-        if isWindowOpen("RobloxPlayerBeta.exe"):
-            leave()
-
         url = joinRandomServer(1537690962)
 
         if not waitForLoading(maxWaitTime=maxWaitTime):
