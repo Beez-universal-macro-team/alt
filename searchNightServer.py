@@ -44,13 +44,38 @@ def waitForLoading(maxWaitTime=20):
         time.sleep(0.05)
 
 def detectNight():
-    screen = screenshot()
+    try:
+        beesmas_enabled = int(readFile("guiFiles/beesmasToggle.txt"))
+    except:
+        beesmas_enabled = 0
 
-    if isColorClose(screen.getpixel(offsetDims((1376, 914), "list")), (86, 100, 107), 10):
-        return True
+    # Load model based on toggle
+    if beesmas_enabled:
+        target_color = (86, 100, 107)
+    else:
+        target_color = (24, 76, 28)
 
-    if isColorClose(screen.getpixel(offsetDims((1376, 914), "list")), (24, 76, 28), 10):
-        return True
+
+    max_diff = 10  # Adjust this value for color tolerance
+
+    screen_width, screen_height = pyautogui.size()
+
+    # Check multiple points on the screen for better accuracy
+    check_points = [
+        (screen_width // 2, screen_height // 2),
+        (screen_width // 4, screen_height // 4),
+        (3 * screen_width // 4, 3 * screen_height // 4)
+    ]
+
+    for point in check_points:
+        pixel_color = pyautogui.pixel(point[0], point[1])
+
+        if isColorClose(pixel_color, target_color, max_diff):
+            print(f"Night detected at point {point}!")
+
+            return True
+
+    print("Night not detected.")
 
     return False
 
