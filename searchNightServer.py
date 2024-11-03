@@ -3,6 +3,7 @@ import time
 from randomServer import joinRandomServer
 from functions import isWindowOpen, isColorClose, sendMessage, sendScreenshot, leave, reset, press, screenshot, click, offsetDims, findImg
 import webbrowser
+import pyautogui
 
 mouse = Controller()
 
