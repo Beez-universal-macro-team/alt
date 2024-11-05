@@ -1,7 +1,7 @@
 from pynput.mouse import Button, Controller
 import time
 from randomServer import joinRandomServer
-from functions import isWindowOpen, isColorClose, sendMessage, sendScreenshot, leave, reset, press, screenshot, click, offsetDims, findImg
+from functions import isWindowOpen, isColorClose, sendMessage, sendScreenshot, leave, reset, press, screenshot, click, offsetDims, findImg, readFile
 import webbrowser
 import pyautogui
 
@@ -31,7 +31,7 @@ def waitForLoading(maxWaitTime=20):
 
     tm = time.time()
 
-    print("Loading found!")
+    #print("Loading found!")
 
     while True:
         screen = screenshot()
@@ -45,16 +45,20 @@ def waitForLoading(maxWaitTime=20):
         time.sleep(0.05)
 
 def detectNight():
-    try:
-        beesmas_enabled = int(readFile("guiFiles/beesmasToggle.txt"))
-    except:
-        beesmas_enabled = 0
+    #try:
+        #beesmas_enabled = int(readFile("guiFiles/beesmasToggle.txt"))
+    #except:
+        #beesmas_enabled = 0
+
+    beesmas_enabled = False
 
     # Load model based on toggle
     if beesmas_enabled:
-        target_color = (86, 100, 107)
+        target_colors = (86, 100, 107)
+
     else:
-        target_color = (24, 76, 28)
+        target_colors = [(24, 76, 28),
+                         (0, 77, 31)]
 
 
     max_diff = 10  # Adjust this value for color tolerance
@@ -71,12 +75,17 @@ def detectNight():
     for point in check_points:
         pixel_color = pyautogui.pixel(point[0], point[1])
 
-        if isColorClose(pixel_color, target_color, max_diff):
-            print(f"Night detected at point {point}!")
+        print(pixel_color)
 
-            return True
+        for target_color in target_colors:
+            if isColorClose(pixel_color, target_color, max_diff):
+                print(f"Night detected at point {point}!")
 
-    print("Night not detected.")
+                return True
+
+    #print("Night not detected.")
+
+    print("")
 
     return False
 
@@ -100,7 +109,7 @@ def findNightServer(maxWaitTime=10, alt=False):
 
         print("Night found!")
 
-        sendScreenshot(f"Night server found :D (attempts: {serverLoop})")
+        sendScreenshot(f"Night server found on alt :D (attempts: {serverLoop})")
 
         click(offsetDims((1000, 500), "list"))
 
