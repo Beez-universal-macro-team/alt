@@ -179,3 +179,5 @@ def readFile(fileName):
     
     with open(full_path, "r") as file:
         return file.read()
+
+from paths import *
