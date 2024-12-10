@@ -3,6 +3,7 @@ import sys
 
 # List of required libraries (with keyboard added)
 required_libraries = [
+    'pyautogui',
     'pynput',
     'Pillow',  # for PIL
     'mss',
