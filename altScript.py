@@ -50,6 +50,8 @@ class Alt:
                 click(offsetDims((1000, 500), "list"))
 
                 if not detectNight():
+                    self.sendToMain("test")
+                    
                     night = False
 
                     continue
