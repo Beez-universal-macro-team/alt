@@ -41,7 +41,7 @@ def waitForLoading(maxWaitTime=20):
         night = False
         
         for color in colors:
-            if isColorClose(screen.getpixel(offsetDims((1300, 812), "list")), (34, 87, 168), 15):
+            if isColorClose(screen.getpixel(offsetDims((1300, 812), "list")), color, 15):
                 night = True
                 
         if night:
