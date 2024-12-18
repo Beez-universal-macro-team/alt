@@ -35,12 +35,20 @@ def waitForLoading(maxWaitTime=20):
 
     while True:
         screen = screenshot()
-
-        if not isColorClose(screen.getpixel(offsetDims((1300, 812), "list")), (34, 87, 168), 15):
+        
+        colors = [(34, 87, 168), (83, 100, 108)]
+        
+        night = False
+        
+        for color in colors:
+            if isColorClose(screen.getpixel(offsetDims((1300, 812), "list")), (34, 87, 168), 15):
+                night = True
+                
+        if night:
             return True
 
         elif time.time() - tm >= maxWaitTime:
-            return False
+                return False
 
         time.sleep(0.05)
 
