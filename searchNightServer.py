@@ -61,7 +61,7 @@ def detectNight():
     beesmas_enabled = False
 
     # Load model based on toggle
-    if beesmas_enabled:
+    if beesmas_enabled and False:
         target_colors = (86, 100, 107)
 
     else:
