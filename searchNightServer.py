@@ -66,7 +66,7 @@ def detectNight():
 
     else:
         target_colors = [(24, 76, 28),
-                         (0, 77, 31)]
+                         (0, 77, 31), (86, 100, 107)]
 
 
     max_diff = 10  # Adjust this value for color tolerance
