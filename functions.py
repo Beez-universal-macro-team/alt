@@ -57,9 +57,9 @@ def sendMessage(message, picture=None):
 def sendScreenshot(message):
     screen = screenshot()
 
-    screen.save("screenshot.png")
+    screen.save(os.path.join(main_dir, "screenshot.png"))
 
-    screen = open("screenshot.png", "rb")
+    screen = open(os.path.join(main_dir, "screenshot.png"), "rb")
 
     t = threading.Thread(target=sendMessage, args=(message, discord.File(screen)))
     t.daemon = True
