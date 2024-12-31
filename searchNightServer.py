@@ -15,6 +15,35 @@ claimHiveMonitor = {
         "mon": 0,
 }
 
+def NightDetect():
+    target_colors = [(86, 100, 107), (24, 76, 28)]
+
+    max_diff = 10  # Adjust this value for color tolerance
+
+    screen_width, screen_height = pyautogui.size()
+
+    # Check multiple points on the screen for better accuracy
+    check_points = [
+        (screen_width // 2, screen_height // 2),
+        (screen_width // 4, screen_height // 4),
+        (3 * screen_width // 4, 3 * screen_height // 4)
+    ]
+
+    for point in check_points:
+        for target_color in target_colors:
+            pixel_color = pyautogui.pixel(point[0], point[1])
+
+            print(pixel_color)
+
+            if isColorClose(pixel_color, target_color, max_diff):
+                print(f"Night detected at point {point}!")
+
+                return True
+
+    print("Night not detected.")
+
+    return False
+
 def waitForLoading(maxWaitTime=20):
     tm = time.time()
 
@@ -41,7 +70,7 @@ def waitForLoading(maxWaitTime=20):
         night = False
         
         for color in colors:
-            if isColorClose(screen.getpixel(offsetDims((1300, 812), "list")), color, 15):
+            if NightDetect():
                 night = True
                 
         if night:
